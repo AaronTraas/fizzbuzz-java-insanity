@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.traas.fizzbuzz.domain.FizzBuzzEnum;
+import org.traas.fizzbuzz.exception.InvalidFizzBuzzProcessorException;
 
 public class FizzBuzzProcessorFactory {
 
@@ -18,7 +19,11 @@ public class FizzBuzzProcessorFactory {
         );
     }
 
-    public IFizzBuzzProcessor getFizzBuzzProcessor(Set<FizzBuzzEnum> replacements) {
-        return processorMap.get(replacements);
+    public IFizzBuzzProcessor getFizzBuzzProcessor(Set<FizzBuzzEnum> replacements) throws InvalidFizzBuzzProcessorException {
+        try {
+            return processorMap.get(replacements);
+        } catch (NullPointerException e) {
+            throw new InvalidFizzBuzzProcessorException(replacements);
+        }
     }
 }

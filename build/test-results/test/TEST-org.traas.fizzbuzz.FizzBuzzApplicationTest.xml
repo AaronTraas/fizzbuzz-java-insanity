@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.traas.fizzbuzz.FizzBuzzApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-15T16:30:04" hostname="baggins" time="0.014">
-  <properties/>
-  <testcase name="testAppHasAGreeting" classname="org.traas.fizzbuzz.FizzBuzzApplicationTest" time="0.014"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
