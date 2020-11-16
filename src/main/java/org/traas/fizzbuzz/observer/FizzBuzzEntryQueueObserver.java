@@ -1,17 +1,17 @@
 package org.traas.fizzbuzz.observer;
 
-import org.traas.fizzbuzz.out.IOutputDelegate;
+import org.traas.fizzbuzz.out.OutputDelegateFactory;
 
 public class FizzBuzzEntryQueueObserver {
 
-    private final IOutputDelegate output;
+    private final OutputDelegateFactory outputFactory;
 
-    public FizzBuzzEntryQueueObserver(IOutputDelegate output) {
-        this.output = output;
+    public FizzBuzzEntryQueueObserver() {
+        outputFactory = new OutputDelegateFactory();
     }
 
     public void observe(FizzBuzzEntryMessage m) {
         m.getEntries().stream()
-            .forEach(s -> output.out(s));
+            .forEach(s -> outputFactory.getDelegate().out(s));
     }
 }

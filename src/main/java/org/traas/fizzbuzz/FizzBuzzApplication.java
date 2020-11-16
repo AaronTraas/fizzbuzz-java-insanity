@@ -1,25 +1,34 @@
 package org.traas.fizzbuzz;
 
 import org.traas.fizzbuzz.facade.FizzBuzzFacade;
-import org.traas.fizzbuzz.model.FizzBuzzTransformedEntryModel;
+import org.traas.fizzbuzz.model.FizzBuzzEntryModel;
 import org.traas.fizzbuzz.observer.FizzBuzzEntryQueueObserver;
-import org.traas.fizzbuzz.out.StandardOutputDelegate;
 
 /**
  * 
  */
 public class FizzBuzzApplication {
 
-    public static void main(String[] args) {
+    private final FizzBuzzEntryModel model;
 
-        final FizzBuzzTransformedEntryModel model = FizzBuzzTransformedEntryModel.getInstance();
+    public FizzBuzzApplication() {
+        model = FizzBuzzEntryModel.getInstance();
 
-        model.setObserver(new FizzBuzzEntryQueueObserver(new StandardOutputDelegate()));
+        model.setObserver(new FizzBuzzEntryQueueObserver());
 
+        //model.setDebug(true);
+    }
+
+
+    public void fizzbuzz() {
         FizzBuzzFacade.fizzBuzzerRange(1, 100)
             .stream()
-            .forEach(s -> model.addEntry(s));
+            .forEach(entry -> model.addEntry(entry));
 
         model.flushQueue();
+    }
+
+    public static void main(String[] args) {
+        new FizzBuzzApplication().fizzbuzz();
     }
 }

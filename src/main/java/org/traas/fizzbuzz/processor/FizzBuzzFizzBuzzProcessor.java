@@ -3,18 +3,17 @@ package org.traas.fizzbuzz.processor;
 import java.util.ArrayList;
 import java.util.List;
 import org.traas.fizzbuzz.domain.FizzBuzzEnum;
-import org.traas.fizzbuzz.transformer.*;
+import org.traas.fizzbuzz.adapter.IFizzBuzzAdapter;
+import org.traas.fizzbuzz.adapter.FizzBuzzAdapterFactory;
 
 public class FizzBuzzFizzBuzzProcessor extends AbstractFizzBuzzProcessor {
 
-    public List<IFizzBuzzTransformer> transformerList;
+    public List<IFizzBuzzAdapter> getAdapterList() {
+        FizzBuzzAdapterFactory factory = new FizzBuzzAdapterFactory();
 
-    public final List<IFizzBuzzTransformer> getTransformerList() {
-        FizzBuzzTransformerFactory factory = new FizzBuzzTransformerFactory();
-
-        return new ArrayList<IFizzBuzzTransformer>() {{ 
-            add(factory.getTransformer(FizzBuzzEnum.FIZZ)); 
-            add(factory.getTransformer(FizzBuzzEnum.BUZZ)); 
+        return new ArrayList<IFizzBuzzAdapter>() {{ 
+            add(factory.getAdapter(FizzBuzzEnum.FIZZ)); 
+            add(factory.getAdapter(FizzBuzzEnum.BUZZ)); 
         }}; 
     }
 }

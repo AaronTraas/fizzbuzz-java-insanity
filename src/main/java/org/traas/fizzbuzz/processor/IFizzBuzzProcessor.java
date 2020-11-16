@@ -1,11 +1,12 @@
 package org.traas.fizzbuzz.processor;
 
 import java.util.List;
-import org.traas.fizzbuzz.transformer.IFizzBuzzTransformer;
+import org.traas.fizzbuzz.adapter.IFizzBuzzAdapter;
+import org.traas.fizzbuzz.domain.FizzBuzzEntry;
 
 public interface IFizzBuzzProcessor {
 
-    public List<IFizzBuzzTransformer> getTransformerList();
+    public List<IFizzBuzzAdapter> getAdapterList();
 
-    public List<String> process(int n);
+    public FizzBuzzEntry process(int n);
 }

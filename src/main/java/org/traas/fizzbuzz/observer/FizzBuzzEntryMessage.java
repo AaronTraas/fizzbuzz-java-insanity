@@ -2,15 +2,17 @@ package org.traas.fizzbuzz.observer;
 
 import java.util.List;
 
+import org.traas.fizzbuzz.domain.FizzBuzzEntry;
+
 public class FizzBuzzEntryMessage {
 
-    private final List<String> entries;
+    private final List<FizzBuzzEntry> entries;
 
-    public FizzBuzzEntryMessage(List<String> entries) {
+    public FizzBuzzEntryMessage(List<FizzBuzzEntry> entries) {
         this.entries = entries;
     }
 
-    public List<String> getEntries() {
+    public List<FizzBuzzEntry> getEntries() {
         return entries;
     }
 }
